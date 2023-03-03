@@ -177,6 +177,8 @@ console.log(manav);
 
 
 /* 	GÖREV 4:
+
+
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde emojiler nesnesinin anahtarı(index) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde tanımlanmış emoji ile değiştirecek bir fonksiyon geliştirmek istiyorlar. ÖRNEK: Mesaj içinde ":)" sembolü bulunursa mesajı alan kişi bu sembolü "🙂" olarak görecek. Burdan yola çıkarak emojileriDonustur fonksiyonuna aşağıdakileri uygulayın.
 			1. Atılan mesaj stringi fonksiyonun birinci parametresi olarak alınacak
 			2. emojiler nesnesi fonksiyonun ikinci parametresi olarak alınacak
@@ -187,13 +189,16 @@ console.log(manav);
 
  */
 
-function emojileriDonustur(   ){
-
-	
-}
-
-
-
+			function emojileriDonustur(mesaj, emojiler) {
+				for (let sembol in emojiler) {
+				  let buyukHarfliSembol = sembol.toUpperCase();
+				  let kucukHarfliSembol = sembol.toLowerCase();
+				  mesaj = mesaj.replaceAll(buyukHarfliSembol, emojiler[sembol]);
+				  mesaj = mesaj.replaceAll(kucukHarfliSembol, emojiler[sembol]);
+				}
+				return mesaj;
+			  }
+			  console.log (emojileriDonustur("Merhaba :D ,  Üzüldün mü :(, :d, :D, :p, :P, :o, :O, <3... ", emojiler))
 
 
 
