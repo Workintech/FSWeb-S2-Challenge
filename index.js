@@ -75,18 +75,19 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello World!"))
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello ",  "World!"))
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
 
-/* kodlar buraya */
+var bircumle = cumleKur("Ben ", "iyi ", "bir ", "yazılımcı ", "olacağım!");
+console.log(bircumle)
 
 
 
@@ -104,11 +105,11 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
-}
-
-
+function cumlelereDonustur(cumleler, ayrac = ",") {
+	const cumleDizisi = cumleler.map((dizi) => dizi.join(ayrac));
+	return cumleDizisi;
+  }
+ // console.log(cumlelereDonustur(cumleler, " "))
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -120,9 +121,19 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
-}
+	function paragrafOlustur(cumleler, cumleKurCB, cumlelereDonusturCB ){
+		const dizi2 = cumlelereDonusturCB(cumleler, " ");
+		const ilkBesEleman= cumleKurCB(dizi2[1], dizi2[3], dizi2[5], dizi2[7], dizi2[9]);
+		return ilkBesEleman;
+		
+	}
+	
+	const paragraf = paragrafOlustur(cumleler, cumleKur, cumlelereDonustur);
+	console.log(paragraf); 
+
+
+
+
 
 
 /* 	GÖREV 3:
