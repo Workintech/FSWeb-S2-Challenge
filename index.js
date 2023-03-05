@@ -75,18 +75,19 @@ function cumleKur(birinci, ikinci="", ucuncu="", dorduncu="", besinci=""){
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello World!"))
 
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, sonucu konsolde gözlemleyin */
 
-
+console.log(cumleKur("Hello ",  "World!"))
 
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
 
-/* kodlar buraya */
+var bircumle = cumleKur("Ben ", "iyi ", "bir ", "yazılımcı ", "olacağım!");
+console.log(bircumle)
 
 
 
@@ -104,11 +105,11 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
-}
-
-
+function cumlelereDonustur(cumleler, ayrac = ",") {
+	const cumleDizisi = cumleler.map((dizi) => dizi.join(ayrac));
+	return cumleDizisi;
+  }
+ // console.log(cumlelereDonustur(cumleler, " "))
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -120,9 +121,19 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
-}
+	function paragrafOlustur(cumleler, cumleKurCB, cumlelereDonusturCB ){
+		const dizi2 = cumlelereDonusturCB(cumleler, " ");
+		const ilkBesEleman= cumleKurCB(dizi2[1], dizi2[3], dizi2[5], dizi2[7], dizi2[9]);
+		return ilkBesEleman;
+		
+	}
+	
+	const paragraf = paragrafOlustur(cumleler, cumleKur, cumlelereDonustur);
+	console.log(paragraf); 
+
+
+
+
 
 
 /* 	GÖREV 3:
@@ -132,35 +143,42 @@ function paragrafOlustur(/* kodlar buraya */ ){
 //3a çözümü
 /* kodlar buraya */
 
+		meyveler.pop();
+		meyveler.shift();
+		console.log(meyveler);
+
 
 
 
 
  
-/* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, Kirpiyi dizinin son elemanına ekleyin 🦔 
+/* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular.
+ Tavşan diziye önden saldıracak, kirpi ise arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, Kirpiyi dizinin son elemanına ekleyin 🦔 
 */
 //3b çözümü
 /* kodlar buraya */
 
-
-
-
-
+	sebzeler.unshift("🐇");
+	sebzeler.push("🦔");
+	console.log(sebzeler);
 
 
 
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
 	*/
 	//3c çözümü
-/* kodlar buraya */
+
 
 var manav;
 
+manav = meyveler.concat(sebzeler);
 
-
+console.log(manav);
 
 
 /* 	GÖREV 4:
+
+
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde emojiler nesnesinin anahtarı(index) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde tanımlanmış emoji ile değiştirecek bir fonksiyon geliştirmek istiyorlar. ÖRNEK: Mesaj içinde ":)" sembolü bulunursa mesajı alan kişi bu sembolü "🙂" olarak görecek. Burdan yola çıkarak emojileriDonustur fonksiyonuna aşağıdakileri uygulayın.
 			1. Atılan mesaj stringi fonksiyonun birinci parametresi olarak alınacak
 			2. emojiler nesnesi fonksiyonun ikinci parametresi olarak alınacak
@@ -168,12 +186,19 @@ var manav;
 				NOT: burada dikkat edilmesi gereken husus şudur; harfli sembolleri kullanıcı küçük harf ve büyük harf olarak girebilir. 
 				yani hem :d hem de :D sembolleri 😁'a dönüşmelidir. bunun için (.toUpperCase ve .toLowerCase metotlarından istediğinizi kullanabilirsiniz.)
 			4. elde edilen string döndürülecek
+
  */
 
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
-
-}
+			function emojileriDonustur(mesaj, emojiler) {
+				for (let sembol in emojiler) {
+				  let buyukHarfliSembol = sembol.toUpperCase();
+				  let kucukHarfliSembol = sembol.toLowerCase();
+				  mesaj = mesaj.replaceAll(buyukHarfliSembol, emojiler[sembol]);
+				  mesaj = mesaj.replaceAll(kucukHarfliSembol, emojiler[sembol]);
+				}
+				return mesaj;
+			  }
+			  console.log (emojileriDonustur("Merhaba :D ,  Üzüldün mü :(, :d, :D, :p, :P, :o, :O, <3... ", emojiler))
 
 
 
