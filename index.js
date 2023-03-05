@@ -104,10 +104,13 @@ var bircumle;
 	*/
 	
 
-function cumlelereDonustur(/* kodlar buraya */ ){
-	/* kodlar buraya */
+function cumlelereDonustur(func,str=","){
+	let cumle= func.map((index)=>{
+		return index.join(str)
+	});
+	return cumle;
 }
-
+console.log(cumlelereDonustur(cumleler," "));
 
 
 /* GÖREV 2:
@@ -120,19 +123,22 @@ function cumlelereDonustur(/* kodlar buraya */ ){
 			6. Oluşturulan paragraf döndürülecek
 	*/
 	
-function paragrafOlustur(/* kodlar buraya */ ){
-	/* kodlar buraya */ 
+function paragrafOlustur(arr,funcKur,funcDonustur,str=" " ){
+	let yeniDizi = funcDonustur(arr," ");
+	let paragraf = funcKur(yeniDizi[1],yeniDizi[3],yeniDizi[5],yeniDizi[7],yeniDizi[9]);
+	return paragraf;
 }
-
+console.log(paragrafOlustur(cumleler,cumleKur,cumlelereDonustur));
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
+meyveler.pop();
+meyveler.shift();
 
-
+console.log(meyveler);
 
 
 
@@ -141,7 +147,10 @@ function paragrafOlustur(/* kodlar buraya */ ){
 */
 //3b çözümü
 /* kodlar buraya */
+sebzeler.unshift("🐇");
+sebzeler.push("🦔");
 
+console.log(sebzeler);
 
 
 
@@ -154,7 +163,9 @@ function paragrafOlustur(/* kodlar buraya */ ){
 	//3c çözümü
 /* kodlar buraya */
 
-var manav;
+var manav = meyveler.concat(sebzeler);
+
+console.log(manav);
 
 
 
@@ -170,8 +181,13 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */){
-/* kodlar buraya */
+function emojileriDonustur(message,obj){
+	for(let a in obj)
+	{
+		message = message.replaceAll(a.toUpperCase(),emojiler[a]);
+		message = message.replaceAll(a.toLowerCase(),emojiler[a]);
+	}
+	return message;
 
 }
 
